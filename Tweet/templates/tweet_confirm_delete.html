@@ -1,0 +1,9 @@
+{% extends "layout.html" %} 
+{% block title  %} Buzzly app {% endblock %}
+{% block  content %}
+<h1 class="text-white text-center mt-4">Are you sure you want to delete ?  </h1> 
+<form method="POST"> {% csrf_token %}
+    <button class="btn btn-primary"> Delete </button> 
+    <a href="{% url 'tweet_list' %}" class="btn btn-sescondary"> Cancel</a>
+</form>
+{% endblock  %}

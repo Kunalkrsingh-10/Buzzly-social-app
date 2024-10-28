@@ -20,7 +20,7 @@ def Tweet_create(request):
            return redirect('tweet_list')
     else:
         form=TweetForm()
-    return render(request, 'create_form.html', {'form':form})    
+    return render(request, 'tweet_form.html', {'form':form})    
 
 def Edit_tweet(request, tweet_id):
     tweet=get_object_or_404(Tweet , pk=tweet_id, user=request.user) # here user is used , a signed in user can only edit tweet .
@@ -33,7 +33,7 @@ def Edit_tweet(request, tweet_id):
            return redirect('tweet_list')
        else:
            form=TweetForm(instance=tweet)
-       return render(request, 'create_form.html', {'form': form})     
+       return render(request, 'tweet_form.html', {'form': form})     
 
 def Delete_tweet(request, tweet_id):
     tweet= get_object_or_404(Tweet, pk=tweet_id, user=request.user) # user is used , only signin user can delete or edit of it's tweet

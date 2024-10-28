@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% load static %} <!-- Ensure static files can be accessed -->
+
+{% block title %} Buzzly app {% endblock %}
+
+{% block content %}
+<h1 class="text-white text-center mt-4">Welcome to Buzzly app</h1>
+<a class="btn btn-primary" href="{% url 'Tweet_create' %}">New Tweet</a>
+<div class="container row gap-3">
+    {% for tweet in tweets %}
+    <div class="card" style="width: 18rem;">
+        {% if tweet.photo %}
+            <img src="{{ tweet.photo.url }}" class="card-img-top" alt="Tweet photo">
+        {% else %}
+            <img src="{% static 'images/default-image.jpg' %}" class="card-img-top" alt="No photo available">
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">{{ tweet.user.username }}</h5>
+            <p class="card-text">{{ tweet.text }}</p>
+            <a href="{% url 'Edit_tweet' tweet.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'Delete_tweet' tweet.id %}" class="btn btn-secondary">Delete</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+

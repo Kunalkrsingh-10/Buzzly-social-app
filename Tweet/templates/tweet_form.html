@@ -1,0 +1,12 @@
+{% extends "layout.html" %} 
+{% block title  %} Buzzly app {% endblock %}
+{% block  content %}
+<h1 class="text-white text-center mt-4">Welcome to in Buzzly app </h1>
+<h2> {% if form.instance.pk %} Edit Tweet { % else % } New Tweet {% endif %}
+    <form method="post" enctype='multipart/form-data' class="form">{{form}} 
+         {% csrf_token %}
+     <button class="btn btn-warning" type="submit">Submit</button>   
+    </form>
+    <a href="{% url 'tweet_list' %}">Back to tweet</a>
+</h2>
+{% endblock  %}
